@@ -27,5 +27,22 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	// 게시판 글보기
+	@GetMapping("/view.do")
+	public String view (int no, Model model) {
+		model.addAttribute("vo", service.view(no));
+		
+		// /WEB-INF/Views/ + board/view + .jsp
+		return "board/view";
+	}
+	
+	// 수정 페이지
+	@GetMapping("/update.do")
+	public String update(int no, Model model) {
+		model.addAttribute("vo", service.update(no));
+		// /WEB-INF/Views/ + board/update + .jsp
+		return "board/update";
+	}
+	
 
 }

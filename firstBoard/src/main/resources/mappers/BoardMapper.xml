@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 일반게시판 쿼리 Mapper
+작성자: 구본홍
+작성일: 2021.09.28 ~ -->
+<mapper namespace="com.hong.Board.mapper.BoardMapper">
+	<select id="list" resultType="com.hong.Board.vo.BoardVO">
+	select * from (
+		select rownum rnum, no, title, writer, writeDate, hit
+		from(
+			select no, title, writer, writeDate, hit
+			from board
+			order by no desc
+			)
+		)
+	where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 전체 데이터의 갯수를 구하는 쿼리 -->
+	<select id="getCount" resultType="Integer">
+		select count(no) from board
+	</select>
+	
+	<select id="view" resultType="com.hong.Board.vo.BoardVO">
+		select no, title, content, writer, writeDate, hit
+		from board
+		where no = #{no}
+	</select>
+	 
+</mapper>

@@ -17,4 +17,16 @@
 		)
 	where rnum between #{startRow} and #{endRow}
 	</select>
+	
+	<!-- 전체 데이터의 갯수를 구하는 쿼리 -->
+	<select id="getCount" resultType="Integer">
+		select count(no) from board
+	</select>
+	
+	<select id="view" resultType="com.hong.Board.vo.BoardVO">
+		select no, title, content, writer, writeDate, hit
+		from board
+		where no = #{no}
+	</select>
+	 
 </mapper>
