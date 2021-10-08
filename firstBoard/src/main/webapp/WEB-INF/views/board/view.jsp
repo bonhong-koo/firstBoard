@@ -71,10 +71,10 @@
 					class="btn btn-default">수정</a>
 					 <a href="" id="deleteBtn"
 					role="button" class="btn btn-default">삭제</a>
-					 <a href="list"
+					 <a href="list.do"
 					class="btn btn-default">리스트</a>
 					<div id="pwDiv">
-						<form action="delete.do" method="post">
+						<form action="delete.do">
 							<input type="hidden" name="no" value="${vo.no }"/>
 							<div class="form-group">
 								<label for="pw">비밀번호:자신글 확인용</label>

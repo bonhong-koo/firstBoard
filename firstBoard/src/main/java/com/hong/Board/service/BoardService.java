@@ -22,14 +22,23 @@ public class BoardService {
 		return mapper.list(pageObject);
 	}
 
-	public Object view(int no) {
+	public BoardVO view(int no) {
 		// 
 		return mapper.view(no);
 	}
 
-	public Object update(int no) {
+	public int update(BoardVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.update(no);
+		return mapper.update(vo);
+	}
+
+	public int delete(int no) {
+		// TODO Auto-generated method stub
+		return mapper.delete(no);
+		
+	}
+	public int write(BoardVO vo) {
+		return mapper.write(vo);
 	}
 	
 

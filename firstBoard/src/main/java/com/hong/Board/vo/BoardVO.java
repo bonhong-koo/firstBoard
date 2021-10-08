@@ -5,10 +5,9 @@ import java.util.Date;
 public class BoardVO {
 	
 	private int no;
-	private String title, content, writer;
+	private String title, content, writer, pw;
 	private Date writeDate;
 	private int hit;
-
 	public int getNo() {
 		return no;
 	}
@@ -33,6 +32,12 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
 	public Date getWriteDate() {
 		return writeDate;
 	}
@@ -45,12 +50,13 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-
 	@Override
 	public String toString() {
-		return "BoardVO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer + ", writeDate="
-				+ writeDate + ", hit=" + hit + "]";
+		return "BoardVO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer + ", pw=" + pw
+				+ ", writeDate=" + writeDate + ", hit=" + hit + "]";
 	}
 	
+
+
 
 }

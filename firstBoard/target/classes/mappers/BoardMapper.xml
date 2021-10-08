@@ -24,9 +24,19 @@
 	</select>
 	
 	<select id="view" resultType="com.hong.Board.vo.BoardVO">
-		select no, title, content, writer, writeDate, hit
+		select no, title, content, writer, writeDate, hit , pw
 		from board
 		where no = #{no}
 	</select>
+	
+	<insert id="write">
+		insert into board(no, title, content, writer, writedate, pw)
+		values(board_seq.nexval, #{title}, #{content}, #{writer}, sysdate, #{pw})
+	</insert>
+	
+	<delete id="delete">
+		delete * from board 
+		where no = #{no}
+	</delete>
 	 
 </mapper>
