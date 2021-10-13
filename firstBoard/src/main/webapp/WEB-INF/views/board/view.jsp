@@ -31,7 +31,24 @@
 			$("#pwDiv").hide();
 			return false;
 		});
+		
+		$("#delete_Btn").click(function(){
+			var pw = document.getElementById("pw").value;	
+			if(pw == "${vo.pw}"){
+				if(confirm("정말 삭제하시겠습니까??") == true){	//확인
+					document.getElementById('delete').submit();
+				}else{
+					return false;
+				}	
+			}else{
+				alert("비밀번호가 틀렸습니다.");
+				return false;
+			}
+			
+		});
+		
 	});
+	
 </script>
 </head>
 <body>
@@ -74,15 +91,15 @@
 					 <a href="list.do"
 					class="btn btn-default">리스트</a>
 					<div id="pwDiv">
-						<form action="delete.do">
+						<form action="delete.do" method="post" id= "delete">
 							<input type="hidden" name="no" value="${vo.no }"/>
 							<div class="form-group">
 								<label for="pw">비밀번호:자신글 확인용</label>
-								<input type="password" class="form-control" id="pw" name="pw"
+								<input type="password" class="form-control" id="pw" 
 								autocomplete="off" title="비밀번호는 4~20 글자 사이로 입력하셔야 합니다."
 								pattern="^.{4,20}"/>
 							</div>
-							<button class="btn btn-default btn-xs">삭제</button>
+							<button id="delete_Btn" class="btn btn-default btn-xs">삭제</button>
 							<button type="button" class="btn btn-default btn-xs" id="delete_cancel_Btn">삭제 취소</button>
 						</form>
 					</div>

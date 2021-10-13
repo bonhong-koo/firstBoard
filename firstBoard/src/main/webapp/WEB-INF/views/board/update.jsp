@@ -16,13 +16,24 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	
 <script type="text/javascript">
-$(function(){
-	//수정 취소 이벤트 처리
-	$(".cancelBtn").click(function(){
-		alert("취소클릭");
-		history.back();
+  	$(function(){
+  		
+ 		$("#update_Btn").click(function(){
+			var pw = document.getElementById("pw").value;
+			if(pw == "${vo.pw}"){
+				if(confirm("수정하시겠습니까?") == true){
+					document.getElementById("updateForm").submit();
+				}else{
+					return false;
+				}
+			}else{
+				alert("비밀번호가 틀렸습니다.");
+				return false;
+			}
+		}); 
+ 		
+		
 	});
-});
 </script>
 </head>
 <body>
@@ -59,9 +70,9 @@ $(function(){
 					autocomplete="off" title="비밀번호는 4~20 글자 사이로 입력하셔야 합니다." pattern="^.{4,20}$">
 			</div>
 			<!-- 버튼 처리 -->
-			<button>수정</button>
-			<button type="reset">다시 입력</button>
-			<button class="cancelBtn" type="button">취소</button>
+			<button class="btn btn-default" id="update_Btn">수정</button>
+			<button class="btn btn-default" type="reset">다시 입력</button>
+			<button class="btn btn-default" type="button" onclick="history.back()">취소</button>
 		</form>
 	
 	</div>

@@ -19,5 +19,7 @@ public interface BoardMapper {
 	public int update(BoardVO vo);
 	//게시판 글삭제
 	public int delete(int no);
+	//조회수 상승
+	public int upHit(int no);
 
 }

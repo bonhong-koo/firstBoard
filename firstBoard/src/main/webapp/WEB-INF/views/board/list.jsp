@@ -68,7 +68,7 @@ $(function(){
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="5"><a href="write.do"><button>글쓰기</button></a></td>
+				<td colspan="5"><a href="write.do" ><button class="btn btn-default">글쓰기</button></a></td>
 			</tr>
 
 

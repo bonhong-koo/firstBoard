@@ -6,6 +6,7 @@
 작성자: 구본홍
 작성일: 2021.09.28 ~ -->
 <mapper namespace="com.hong.Board.mapper.BoardMapper">
+	<!-- 게시판 리스트 보기 -->
 	<select id="list" resultType="com.hong.Board.vo.BoardVO">
 	select * from (
 		select rownum rnum, no, title, writer, writeDate, hit
@@ -23,19 +24,37 @@
 		select count(no) from board
 	</select>
 	
+	<!-- 게시판 글보기 -->
 	<select id="view" resultType="com.hong.Board.vo.BoardVO">
-		select no, title, content, writer, writeDate, hit , pw
+		select no, title, content, writer, writedate, hit , pw
 		from board
 		where no = #{no}
 	</select>
+		
+	<!-- 조회수 상승 -->
+	<update id="upHit">
+		update board set hit = hit + 1
+		where no = #{no}
+	</update>
 	
+	<!-- 게시판 글수정 -->
+	<update id="update">
+		update board set
+			title = #{title},
+			content = #{content},
+			writer = #{writer}
+		where no = #{no}
+	</update>
+	
+	<!-- 게시판 글작성 -->
 	<insert id="write">
 		insert into board(no, title, content, writer, writedate, pw)
-		values(board_seq.nexval, #{title}, #{content}, #{writer}, sysdate, #{pw})
+		values(board_seq.nextval, #{title}, #{content}, #{writer}, sysdate, #{pw})
 	</insert>
 	
+	<!-- 게시판 글삭제 -->
 	<delete id="delete">
-		delete * from board 
+		delete from board 
 		where no = #{no}
 	</delete>
 	 

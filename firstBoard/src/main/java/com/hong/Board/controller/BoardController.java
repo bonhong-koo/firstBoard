@@ -1,6 +1,7 @@
 package com.hong.Board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,7 @@ public class BoardController {
 	// 게시판 글보기
 	@GetMapping("/view.do")
 	public String view (int no, Model model) {
+		service.upHit(no);
 		model.addAttribute("vo", service.view(no));
 		
 		// /WEB-INF/Views/ + board/view + .jsp
@@ -45,14 +47,33 @@ public class BoardController {
 		// /WEB-INF/Views/ + board/update + .jsp
 		return "board/update";
 	}
+	// 수정
+	@PostMapping("/update.do")
+	public String update(BoardVO Vo) {
+		int flag = service.update(Vo);
+		
+		if(flag == 1) {
+			return "redirect:list.do";
+		}else {
+			return "null";
+		}
+		
+		
+	}
 
 	//삭제
 	@PostMapping("/delete.do")
 	public String delete(int no) {
-		service.delete(no);
+		int flag = service.delete(no);
 		
-		// /WEB-INF/views/ + board/list + .jsp
-		return "redirect:board/list";
+		if(flag == 1) {
+			// /WEB-INF/views/ + board/list + .jsp
+			return "redirect:list.do";
+		}else {
+			return "null";
+		}
+		
+		
 	}
 	//글쓰기 페이지
 	@GetMapping("/write.do")
@@ -64,8 +85,13 @@ public class BoardController {
 	//글쓰기 처리
 	@PostMapping("/write.do")
 	public String write(BoardVO vo) {
-		service.write(vo);
-		return "redirect:list.do";
+		int flag = service.write(vo);
+		if(flag == 1) {
+			return "redirect:list.do";			
+		}else {
+			return "null";
+		}
+		
 	}
 
 }

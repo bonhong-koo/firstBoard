@@ -40,6 +40,9 @@ public class BoardService {
 	public int write(BoardVO vo) {
 		return mapper.write(vo);
 	}
+	public int upHit(int no) {
+		return mapper.upHit(no);
+	}
 	
 
 }
