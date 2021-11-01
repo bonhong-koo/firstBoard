@@ -9,6 +9,32 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<ol type="a">
+	<li>html</li>
+	<li>html</li>
+	<li>html</li>
+	<li>html</li>
+</ol>
+<input type="password"><br>
+<input type="date"><br>
+<input type="time"><br>
+<input type="range"><br>
+<table>
+	<tr>
+		<td>ww</td>
+		<td>ww</td>
+		<td>ww</td>
+	</tr>
+		<tr>
+		<td>ww</td>
+		<td>ww</td>
+		<td>ww</td>
+	</tr>
+		<tr>
+		<td>ww</td>
+		<td>ww</td>
+		<td>ww</td>
+	</tr>
+</table>
 </body>
 </html>
